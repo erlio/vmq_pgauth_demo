@@ -1,6 +1,6 @@
 # VerneMQ Demo Postgres Auth Plugin
 
-This is a VerneMQ plugin demonstrating how to use the PostgreSQL DB for authenticating and authorizing clients. This is for demonstration purposes only as it currently doesn't deal with SQL injection, caching and other issues related to production use.
+This is a VerneMQ plugin demonstrating how to use the PostgreSQL DB for authenticating and authorizing clients. This is for demonstration purposes only, as it currently doesn't deal with neither SQL injection, hashing of passwords caching nor other issues related to production use.
 
 ### Prerequisites:
 
@@ -31,6 +31,6 @@ Important: after every change to this file you must recompile the plugin.
 
 ### Remarks
 
-If you've running a vanilla VerneMQ instance you might want to disable the ``vmq_acl`` and ``vmq_passwd`` plugins.
+If you're running a vanilla VerneMQ instance you might want to disable the ``vmq_acl`` and ``vmq_passwd`` plugins.
 
 
