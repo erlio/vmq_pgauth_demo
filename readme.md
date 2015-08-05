@@ -23,7 +23,7 @@ Important: after every change to this file you must recompile the plugin.
 
 ### How to load
 
-    vmq-admin plugin enable -n vmq_pgauth_demo --path <path_to_vmq_pgauth_demo>/_build/default/lib
+    vmq-admin plugin enable -n vmq_pgauth_demo --path <path_to_vmq_pgauth_demo>/_build/default
 
 ### How to unload
 
