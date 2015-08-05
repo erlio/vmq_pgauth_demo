@@ -1,12 +1,13 @@
 # VerneMQ Demo Postgres Auth Plugin
 
-This is a VerneMQ plugin demonstrating how to use the PostgreSQL DB for authenticating and authorizing clients. This is for demonstration purposes only, as it currently doesn't deal with neither SQL injection, hashing of passwords, query result caching nor other issues related to production use.
+This is a [VerneMQ](https://verne.mq) plugin demonstrating how to use the PostgreSQL DB for authenticating and authorizing clients. This is for demonstration purposes only, as it currently doesn't deal with neither SQL injection, hashing of passwords, query result caching nor other issues related to production use.
 
-### Prerequisites:
+### Prerequisites
 
-A recent version of Erlang OTP (e.g. 17.5, same version as VerneMQ is recommended) and obviously a running Postgres instance. Make sure to create the proper DB schema in advance, look at the ``vernemq_db.sql`` file.
+A recent version of Erlang OTP (e.g. 17.5, same version as VerneMQ is recommended) and obviously a running Postgres instance. Check the [VerneMQ documentation](https://verne.mq/docs) for the installation and configuration manual. 
+Make sure to create the proper DB schema in advance, look at the ``vernemq_db.sql`` file.
 
-### How to configure:
+### How to configure
 
 Change the database related configuration in src/vmq_pgauth_demo.app.src
 
@@ -17,7 +18,7 @@ Change the database related configuration in src/vmq_pgauth_demo.app.src
 
 Important: after every change to this file you must recompile the plugin.
 
-### How to (re-)compile:
+### How to (re-)compile
 
     ./rebar3 compile
 
@@ -33,4 +34,8 @@ Important: after every change to this file you must recompile the plugin.
 
 If you're running a vanilla VerneMQ instance you might want to disable the ``vmq_acl`` and ``vmq_passwd`` plugins.
 
+
+### Get in touch
+
+Any questions? [Please feel free to get in touch with us!](https://verne.mq/docs/community.html)
 
