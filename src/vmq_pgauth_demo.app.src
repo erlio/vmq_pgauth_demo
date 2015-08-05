@@ -1,0 +1,43 @@
+{application, vmq_pgauth_demo,
+ [
+  {description, "A Simple VerneMQ Postgres Auth Plugin"},
+  {vsn, git},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  crypto,
+                  ssl,
+                  epgsql,
+                  poolboy
+                 ]},
+  {mod, { vmq_pgauth_demo_app, []}},
+  {env, [
+         %% this tells VerneMQ to look in the file 'vernemq_demo_plugin'
+         %% for the plugin hook functions. The format is:
+         %%  {ModuleName, HookName, Arity, Opts}
+         {vmq_plugin_hooks, 
+          [
+           {vmq_pgauth_demo, auth_on_register, 5, []},
+           {vmq_pgauth_demo, auth_on_publish, 6, []},
+           {vmq_pgauth_demo, auth_on_subscribe, 3, []}
+          ]},
+         {pools, [
+                  %% Worker Pool Definition
+                    {vmq_pgauth_pool, 
+                     [
+                      {size, 10},
+                      {max_overflow, 20}
+                     ],
+                     %% the database configuration used by the 
+                     %% workers of this pool
+                     [
+                      {hostname, "127.0.0.1"},
+                      {database, "vernemq_db"},
+                      {username, "vernemq"},
+                      {password, "vernemq"}
+                     ]
+                    }
+                 ]}
+        ]}
+ ]}.
