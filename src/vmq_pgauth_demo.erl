@@ -45,7 +45,7 @@ auth_on_publish(UserName, {MountPoint, ClientId} = SubscriberId, QoS, Topic, Pay
     case IsRetain of
         true ->
             vmq_pgauth_worker:equery(?POOL,
-                "select count(*) from on_publish,on_register where mountpoint = $1 and clientid = $2 and username=$3 and topic=$4 and qos >= $5 and maxpayloadsize >= $6 and allow_retain=TRUE",
+                "select count(*) from on_publish,on_register where on_register.id = on_publish.subscriber_id and mountpoint = $1 and clientid = $2 and username=$3 and topic=$4 and qos >= $5 and maxpayloadsize >= $6 and allow_retain=TRUE",
                 [MountPoint, ClientId,
                  empty_string_if_undefined(UserName),
                  flatten_topic(Topic),
@@ -54,7 +54,7 @@ auth_on_publish(UserName, {MountPoint, ClientId} = SubscriberId, QoS, Topic, Pay
             );
         false ->
             vmq_pgauth_worker:equery(?POOL,
-                "select count(*) from on_publish,on_register where mountpoint = $1 and clientid = $2 and username=$3 and topic=$4 and qos >= $5 and maxpayloadsize >= $6",
+                "select count(*) from on_publish,on_register where on_register.id = on_publish.subscriber_id and mountpoint = $1 and clientid = $2 and username=$3 and topic=$4 and qos >= $5 and maxpayloadsize >= $6",
                 [MountPoint, ClientId,
                  empty_string_if_undefined(UserName),
                  flatten_topic(Topic),
@@ -73,7 +73,7 @@ auth_on_publish(UserName, {MountPoint, ClientId} = SubscriberId, QoS, Topic, Pay
 auth_on_subscribe(UserName, {MountPoint, ClientId} = SubscriberId, Topics) ->
     Ret =
     vmq_pgauth_worker:equery(?POOL,
-        "select topic, qos from on_subscribe,on_register where mountpoint = $1 and clientid = $2 and username=$3",
+        "select topic, qos from on_subscribe,on_register where on_register.id = on_subscribe.subscriber_id and mountpoint = $1 and clientid = $2 and username=$3",
         [MountPoint, ClientId, empty_string_if_undefined(UserName)]),
     case Ret of
         {ok, _, TopicQoSList} when length(TopicQoSList) >= length(Topics) ->
