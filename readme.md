@@ -4,7 +4,7 @@ This is a [VerneMQ](https://verne.mq) plugin demonstrating how to use the Postgr
 
 ### Prerequisites
 
-A recent version of Erlang OTP (e.g. 17.5, same version as VerneMQ is recommended) and obviously a running Postgres instance. Check the [VerneMQ documentation](https://verne.mq/docs) for the installation and configuration manual. 
+A recent version of Erlang OTP (e.g. 17.5, same version as VerneMQ is recommended) and obviously a running Postgres instance. Check the [VerneMQ documentation](https://vernemq.com/docs) for the installation and configuration manual. 
 Make sure to create the proper DB schema in advance, look at the ``vernemq_db.sql`` file.
 
 ### How to configure
@@ -37,5 +37,5 @@ If you're running a vanilla VerneMQ instance you might want to disable the ``vmq
 
 ### Get in touch
 
-Any questions? [Please feel free to get in touch with us!](https://verne.mq/docs/community.html)
+Any questions? [Please feel free to get in touch with us!](https://vernemq.com/docs/community.html)
 
